@@ -522,6 +522,7 @@ atlassian-ide-plugin.xml
 # SonarLint plugin
 .idea/sonarlint/
 .idea/.idea.SpiffoManager.Discord/.idea/sonarlint/
+.idea/.idea.SpiffoManager.Discord/.idea/sonarlint/issuestore/
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
