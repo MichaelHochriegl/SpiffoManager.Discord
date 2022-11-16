@@ -2,6 +2,7 @@ using Discord.Enums;
 using Discord.Extensions;
 using Discord.Interactions;
 using JetBrains.Annotations;
+using Microsoft.Extensions.Configuration;
 using ShellAccess.Scripts;
 using ShellAccess.ServerCommands;
 
@@ -13,10 +14,12 @@ namespace Discord.Modules;
 public class ServerModule : InteractionModuleBase<SocketInteractionContext>
 {
     private readonly IRunner _scriptRunner;
+    private readonly ulong _roleId;
 
-    public ServerModule(IRunner scriptRunner)
+    public ServerModule(IRunner scriptRunner, IConfiguration configuration)
     {
         _scriptRunner = scriptRunner;
+        _roleId = configuration.GetValue<ulong>("DiscordBotSettings:GameserverRoleId");
     }
 
     /// <summary>
@@ -27,7 +30,7 @@ public class ServerModule : InteractionModuleBase<SocketInteractionContext>
     [SlashCommand("pzserver", "Issuing commands to the Project Zomboid Gameserver.")]
     public async Task ExecuteServerCommand(ServerCommands input)
     {
-        if (Context.User.HasRole(920780251846553610) is false)
+        if (Context.User.HasRole(_roleId) is false)
         {
             await RespondAsync(embed: $"You are not allowed to execute this command!".ToEmbed());
             return;
