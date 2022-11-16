@@ -14,7 +14,7 @@ public class GracefulRestartCommand : ServerCommandBase
     {
     }
 
-    protected override async Task<ServerCommandResult> ExecuteCommandAsync()
+    public override async Task<ServerCommandResult> ExecuteCommandAsync()
     {
         var result = await base.ExecuteCommandAsync();
 

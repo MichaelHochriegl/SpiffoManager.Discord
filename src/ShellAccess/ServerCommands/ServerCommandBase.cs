@@ -16,7 +16,7 @@ public abstract class ServerCommandBase
         _script = script;
     }
 
-    protected virtual async Task<ServerCommandResult> ExecuteCommandAsync()
+    public virtual async Task<ServerCommandResult> ExecuteCommandAsync()
     {
         var scriptResult = await _scriptRunner.ExecuteScript(_script);
         var result = new ServerCommandResult(exitCode: scriptResult.CommandResult.ExitCode, rawMessage: scriptResult.CliMessage);
