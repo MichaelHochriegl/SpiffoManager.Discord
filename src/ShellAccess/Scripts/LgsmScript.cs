@@ -5,7 +5,7 @@ namespace ShellAccess.Scripts;
 /// </summary>
 public class LgsmScript : ScriptBase
 {
-    private new const string Script = "./pzserver";
+    private new const string Script = "../pzserver";
 
     public LgsmScript(IEnumerable<string> arguments) : base(Script, arguments)
     {

@@ -7,7 +7,7 @@ namespace ShellAccess.ServerCommands;
 /// </summary>
 public class GracefulStopCommand : ServerCommandBase
 {
-    private const string ScriptPath = "./graceful_stop.sh";
+    private const string ScriptPath = "../graceful_stop.sh";
     private static readonly CustomScript Script = new(ScriptPath);
     
     public GracefulStopCommand(IRunner scriptRunner) : base(scriptRunner, Script)
