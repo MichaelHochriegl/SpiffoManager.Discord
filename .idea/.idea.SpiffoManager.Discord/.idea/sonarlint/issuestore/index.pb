@@ -1,6 +1,4 @@
 
-B
-src/Bot/Bot.csproj,d/0/d071d8ff1143da22ce96cdf349aa17d38c94fe4a
 U
 %src/ShellAccess/Scripts/ScriptBase.cs,8/1/81c18aa4b04ffab111b030be9064675dace7b1c8
 W
