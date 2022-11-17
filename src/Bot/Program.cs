@@ -1,5 +1,6 @@
 using Bot;
 using Discord;
+using Persistence;
 using Serilog;
 using ShellAccess;
 
@@ -21,6 +22,7 @@ try
         .ConfigureServices(services =>
         {
             services.AddShellAccess();
+            services.AddPersistence(configuration);
             services.AddDiscord(configuration);
             services.AddHostedService<Worker>();
         })
