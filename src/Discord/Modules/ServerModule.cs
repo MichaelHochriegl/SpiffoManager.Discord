@@ -53,6 +53,7 @@ public class ServerModule : InteractionModuleBase<SocketInteractionContext>
             ServerCommands.GracefulStop => new GracefulStopCommand(_scriptRunner),
             ServerCommands.GracefulRestart => new GracefulRestartCommand(_scriptRunner),
             ServerCommands.Status => new StatusCommand(_scriptRunner),
+            ServerCommands.PlayerCount => new GetPlayersCommand(_scriptRunner),
             _ => throw new ArgumentOutOfRangeException(nameof(input), input, null)
         };
 

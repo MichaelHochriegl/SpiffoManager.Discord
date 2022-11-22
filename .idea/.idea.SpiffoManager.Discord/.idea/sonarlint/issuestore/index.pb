@@ -15,8 +15,6 @@ Y
 )src/Discord/Extensions/EmbedExtensions.cs,e/3/e300fb74e5b01b263954754f965930d226c736ab
 f
 6src/Discord/Extensions/InteractionContextExtensions.cs,8/c/8c74e69664857c5adaed40757f6550b6aebec305
-S
-#src/Discord/Enums/ServerCommands.cs,7/5/750b79ea19159c7948e3c8786cdf07e743e4f3d5
 J
 src/Discord/Discord.csproj,8/5/855f3c1176352d91397e1f120478ed668768209b
 R
@@ -41,5 +39,7 @@ V
 &src/ShellAccess/DependencyInjection.cs,a/2/a2d75974b3655cc9cdedd45e10039aeb69450e3e
 e
 5src/ShellAccess/ServerCommands/GracefulStopCommand.cs,f/9/f966eae2a0d2b935183c2af7089a659e171626ce
-S
-#src/Discord/Modules/ServerModule.cs,b/a/ba15fb00d9c15e3ed3e9e8df3790bedb49b23db5
+B
+src/Bot/Program.cs,d/6/d6d2dd61455ff35f6c4ba5b3ae60af9473bd8fca
+H
+src/Bot/appsettings.json,4/6/4646d41bf830050ac7b180ce1e10040af21f9212
