@@ -20,5 +20,7 @@ public enum ServerCommands
     [Description("Gracefully restarts the server by giving the players time to get save and disconnect.")]
     GracefulRestart,
     [Description("Shows wether the server is running or stopped.")]
-    Status
+    Status,
+    [Description("Retrieves the current count of players on the server.")]
+    PlayerCount
 }
