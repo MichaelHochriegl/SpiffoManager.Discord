@@ -8,6 +8,9 @@ using Persistence.Repositories;
 
 namespace Discord.Modules;
 
+/// <summary>
+/// Discord interaction module for commands targeting common bot management
+/// </summary>
 public class SpiffoManagerModule : InteractionModuleBase<SocketInteractionContext>
 {
     private readonly IServiceProvider _serviceProvider;
@@ -18,13 +21,21 @@ public class SpiffoManagerModule : InteractionModuleBase<SocketInteractionContex
         _serviceProvider = serviceProvider;
     }
     
+    /// <summary>
+    /// Issues a modal to the user that allows for adding a new pz server
+    /// </summary>
     [UsedImplicitly]
     [SlashCommand("add-server", "Adds a gameserver to the bot to manage.")]
+    [RequireOwner]
     public async Task HandleAddServerCommand()
     {
         await RespondWithModalAsync<AddGameServerModal>(AddGameServerModalCustomId);
     }
 
+    /// <summary>
+    /// Catches the modal confirmation and adds the server if not already managed
+    /// </summary>
+    /// <param name="modal">The <see cref="AddGameServerModal"/> the user sent</param>
     [UsedImplicitly]
     [ModalInteraction(AddGameServerModalCustomId)]
     public async Task HandleAddGameServerModal(AddGameServerModal modal)
