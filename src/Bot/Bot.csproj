@@ -10,6 +10,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Hosting" />
         <PackageReference Include="Serilog.Enrichers.Environment" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
         <PackageReference Include="Serilog.Enrichers.Process" />
         <PackageReference Include="Serilog.Enrichers.Thread" />
         <PackageReference Include="Serilog.Extensions.Hosting" />
