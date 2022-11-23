@@ -2,6 +2,7 @@ using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Persistence.Repositories;
 
 namespace Persistence;
 
@@ -22,6 +23,8 @@ public static class DependencyInjection
                 opt.MigrationsAssembly(typeof(SpiffoDbContext).Assembly.FullName));
         });
 
+        services.AddScoped<IGameServerRepository, GameServerRepository>();
+        
         return services;
     }
 }

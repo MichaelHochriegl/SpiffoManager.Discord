@@ -15,6 +15,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Persistence\Persistence.csproj" />
       <ProjectReference Include="..\ShellAccess\ShellAccess.csproj" />
     </ItemGroup>
     

@@ -5,4 +5,15 @@ public class GameServer
     public ulong Id { get; set; }
     public string ServerName { get; set; } = "pzserver";
     public string ServerInstallPath { get; set; } = "../";
+
+    private GameServer()
+    {
+        
+    }
+
+    public GameServer(string serverName, string serverInstallPath)
+    {
+        ServerName = serverName;
+        ServerInstallPath = serverInstallPath;
+    }
 }
