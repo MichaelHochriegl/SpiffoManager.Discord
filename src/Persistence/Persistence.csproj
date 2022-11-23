@@ -9,6 +9,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+      <PackageReference Include="Ardalis.GuardClauses" />
     </ItemGroup>
 
 </Project>
