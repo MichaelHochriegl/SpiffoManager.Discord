@@ -36,4 +36,14 @@ public interface IGameServerRepository
     /// <param name="ct">A <see cref="CancellationToken"/> to observe while waiting for the task to complete</param>
     /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
     Task AddAsync(GameServer gameServer, CancellationToken ct = default);
+
+    /// <summary>
+    /// Gets a <see cref="GameServer"/> by it's <paramref name="serverName"/>
+    /// </summary>
+    /// <param name="serverName">The name to get the <see cref="GameServer"/> by.</param>
+    /// <param name="ct"></param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous operation.
+    /// The task result contains a <see cref="GameServer"/>;
+    /// otherwise, null.</returns>
+    Task<GameServer?> GetByNameOrDefaultAsync(string serverName, CancellationToken ct = default);
 }

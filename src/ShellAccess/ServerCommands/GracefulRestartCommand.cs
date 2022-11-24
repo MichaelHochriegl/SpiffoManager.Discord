@@ -7,7 +7,7 @@ namespace ShellAccess.ServerCommands;
 /// </summary>
 public class GracefulRestartCommand : ServerCommandBase
 {
-    private const string ScriptPath = "../graceful_restart.sh";
+    private const string ScriptPath = "graceful_restart.sh";
     private static readonly CustomScript Script = new(ScriptPath);
     
     public GracefulRestartCommand(IRunner scriptRunner) : base(scriptRunner, Script)

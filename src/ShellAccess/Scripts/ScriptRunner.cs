@@ -5,11 +5,14 @@ namespace ShellAccess.Scripts;
 
 public class ScriptRunner : IRunner
 {
+    public string ScriptDir { get; set; } = "../";
+
     public async Task<ScriptResult> ExecuteScript(ScriptBase script)
     {
+        var scriptPath = string.Join(Path.DirectorySeparatorChar, ScriptDir, script.Script);
         var resultBuilder = new StringBuilder();
         var resultErrorBuilder = new StringBuilder();
-        var cmd = Cli.Wrap(script.Script)
+        var cmd = Cli.Wrap(scriptPath)
             .WithArguments(script.Arguments)
             .WithValidation(CommandResultValidation.None)
             .WithStandardOutputPipe(PipeTarget.ToStringBuilder(resultBuilder))

@@ -29,4 +29,10 @@ public class GameServerRepository : IGameServerRepository
         _dbContext.GameServers.Add(gameServer);
         await _dbContext.SaveChangesAsync(ct);
     }
+
+    public async Task<GameServer?> GetByNameOrDefaultAsync(string serverName, CancellationToken ct = default)
+    {
+        return await _dbContext.GameServers
+            .FirstOrDefaultAsync(g => g.ServerName == serverName, cancellationToken: ct);
+    }
 }
