@@ -8,9 +8,9 @@ namespace ShellAccess.ServerCommands;
 public class StatusCommand : ServerCommandBase
 {
     private const string Command = "monitor";
-    private static readonly LgsmScript Script = new(Command);
-    
-    public StatusCommand(IRunner scriptRunner) : base(scriptRunner, Script)
+
+    public StatusCommand(IRunner scriptRunner, string gameServerName = "pzserver") 
+        : base(scriptRunner, new LgsmScript(gameServerName, Command))
     {
     }
 

@@ -8,9 +8,9 @@ namespace ShellAccess.ServerCommands;
 public class ImmediateStopCommand : ServerCommandBase
 {
     private const string Command = "stop";
-    private static readonly LgsmScript Script = new(Command);
-    
-    public ImmediateStopCommand(IRunner scriptRunner) : base(scriptRunner, Script)
+
+    public ImmediateStopCommand(IRunner scriptRunner, string gameServerName = "pzserver") 
+        : base(scriptRunner, new LgsmScript(gameServerName, Command))
     {
     }
 
