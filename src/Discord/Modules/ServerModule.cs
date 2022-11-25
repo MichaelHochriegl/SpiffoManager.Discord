@@ -76,8 +76,8 @@ public class ServerModule : InteractionModuleBase<SocketInteractionContext>
             ServerCommands.ImmediateStop => new ImmediateStopCommand(_scriptRunner, gameServer.ServerName),
             ServerCommands.ImmediateRestart => new ImmediateRestartCommand(_scriptRunner, gameServer.ServerName),
             ServerCommands.ImmediateUpdate => new ImmediateUpdateCommand(_scriptRunner, gameServer.ServerName),
-            ServerCommands.GracefulStop => new GracefulStopCommand(_scriptRunner),
-            ServerCommands.GracefulRestart => new GracefulRestartCommand(_scriptRunner),
+            ServerCommands.GracefulStop => new GracefulStopCommand(_scriptRunner, gameServer.ServerName),
+            ServerCommands.GracefulRestart => new GracefulRestartCommand(_scriptRunner, gameServer.ServerName),
             ServerCommands.Status => new StatusCommand(_scriptRunner, gameServer.ServerName),
             ServerCommands.PlayerCount => new GetPlayersCommand(_scriptRunner, gameServer.ServerName),
             _ => throw new ArgumentOutOfRangeException(nameof(input), input, null)
