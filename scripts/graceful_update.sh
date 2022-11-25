@@ -7,5 +7,5 @@
 session=$1
 tmux send-keys -t $session "servermsg \"Check auf neue Version...\"" Enter
 sleep 5
-~/pzserver update
+./$session update
 

@@ -19,12 +19,12 @@ done
 
 tmux send-keys -t $session  "servermsg \"Stop des Servers jetzt!\"" Enter
 sleep 5
-~/pzserver stop
+./$session stop
 sleep 10
 git stash
 sleep 5
 git pull
 sleep 20
-rm ~/serverfiles/steamapps/workshop/appworkshop_108600.acf
-rm -R ~/serverfiles/steamapps/workshop/content
+rm ./serverfiles/steamapps/workshop/appworkshop_108600.acf
+rm -R ./serverfiles/steamapps/workshop/content
 sleep 5
