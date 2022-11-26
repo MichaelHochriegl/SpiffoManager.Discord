@@ -1,8 +1,10 @@
 #!/bin/bash
 # Save this script as "get_players.sh"
 # Make it executable with "chmod +x get_players.sh"
-session=$(tmux list-sessions |  cut -d: -f1)
+session=$1
+tmux pipe-pane -t $session 'cat >/tmp/capture'
 tmux send-keys -t $session "players" Enter
-sleep 1
-output=$(tmux capture-pane -p -t $session -E -1 | grep -oE 'Players connected \(([[:digit:]]+)\)' | grep -oE '[[:digit:]]+')
-echo $output
+sleep 2
+tmux pipe-pane -t $session
+output=$(</tmp/capture)
+echo $output | grep -oE 'Players connected \(([[:digit:]]+)\)' | grep -oE '[[:digit:]]+'

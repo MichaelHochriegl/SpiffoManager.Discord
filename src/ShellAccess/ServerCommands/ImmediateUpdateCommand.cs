@@ -8,9 +8,9 @@ namespace ShellAccess.ServerCommands;
 public class ImmediateUpdateCommand : ServerCommandBase
 {
     private const string Command = "update";
-    private static readonly LgsmScript Script = new(Command);
-    
-    public ImmediateUpdateCommand(IRunner scriptRunner) : base(scriptRunner, Script)
+
+    public ImmediateUpdateCommand(IRunner scriptRunner, string gameServerName = "pzserver") 
+        : base(scriptRunner, new LgsmScript(gameServerName, Command))
     {
     }
 

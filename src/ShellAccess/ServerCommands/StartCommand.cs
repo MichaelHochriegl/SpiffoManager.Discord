@@ -8,9 +8,9 @@ namespace ShellAccess.ServerCommands;
 public class StartCommand : ServerCommandBase
 {
     private const string Command = "start";
-    private static readonly LgsmScript Script = new(Command);
-    
-    public StartCommand(IRunner scriptRunner) : base(scriptRunner, Script)
+
+    public StartCommand(IRunner scriptRunner, string gameServerName = "pzserver") 
+        : base(scriptRunner, new LgsmScript(gameServerName, Command))
     {
     }
 

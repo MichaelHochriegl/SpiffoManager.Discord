@@ -773,3 +773,6 @@ $RECYCLE.BIN/
 # Custom ignores
 ## Secrets
 src/Bot/appsettings.Development.json
+*.db
+*.db-shm
+*.db-wal

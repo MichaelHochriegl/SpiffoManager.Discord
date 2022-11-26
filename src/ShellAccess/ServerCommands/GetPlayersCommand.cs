@@ -7,10 +7,10 @@ namespace ShellAccess.ServerCommands;
 /// </summary>
 public class GetPlayersCommand : ServerCommandBase
 {
-    private const string ScriptPath = "../get_players.sh";
-    private static readonly CustomScript Script = new(ScriptPath);
-    
-    public GetPlayersCommand(IRunner scriptRunner) : base(scriptRunner, Script)
+    private const string Script = "get_players.sh";
+
+    public GetPlayersCommand(IRunner scriptRunner, string gameServerName = "pzserver") 
+        : base(scriptRunner, new CustomScript(Script, gameServerName))
     {
     }
 

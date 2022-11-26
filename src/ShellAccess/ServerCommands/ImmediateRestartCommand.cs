@@ -8,9 +8,9 @@ namespace ShellAccess.ServerCommands;
 public class ImmediateRestartCommand : ServerCommandBase
 {
     private const string Command = "restart";
-    private static readonly LgsmScript Script = new(Command);
-    
-    public ImmediateRestartCommand(IRunner scriptRunner) : base(scriptRunner, Script)
+
+    public ImmediateRestartCommand(IRunner scriptRunner, string gameServerName = "pzserver") 
+        : base(scriptRunner, new LgsmScript(gameServerName, Command))
     {
     }
 
