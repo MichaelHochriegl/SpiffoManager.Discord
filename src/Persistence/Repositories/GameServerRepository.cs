@@ -35,4 +35,10 @@ public class GameServerRepository : IGameServerRepository
         return await _dbContext.GameServers
             .FirstOrDefaultAsync(g => g.ServerName == serverName, cancellationToken: ct);
     }
+
+    public async Task AddRolesAsync(IEnumerable<GameServerRole> roles, CancellationToken ct = default)
+    {
+        _dbContext.GameServerRoles.AddRange(roles);
+        await _dbContext.SaveChangesAsync(ct);
+    }
 }

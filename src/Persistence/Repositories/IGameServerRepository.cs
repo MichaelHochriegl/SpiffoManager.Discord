@@ -46,4 +46,6 @@ public interface IGameServerRepository
     /// The task result contains a <see cref="GameServer"/>;
     /// otherwise, null.</returns>
     Task<GameServer?> GetByNameOrDefaultAsync(string serverName, CancellationToken ct = default);
+
+    Task AddRolesAsync(IEnumerable<GameServerRole> roles, CancellationToken ct = default);
 }

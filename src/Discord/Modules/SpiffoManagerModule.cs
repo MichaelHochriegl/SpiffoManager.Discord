@@ -1,6 +1,7 @@
 using Discord.Extensions;
 using Discord.Interactions;
 using Discord.Modals;
+using Discord.WebSocket;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Entities;
@@ -15,6 +16,7 @@ public class SpiffoManagerModule : InteractionModuleBase<SocketInteractionContex
 {
     private readonly IServiceProvider _serviceProvider;
     private const string AddGameServerModalCustomId = "add_pz_gs";
+    private const string RoleSelectionCustomId = "gs_discord_role_select";
 
     public SpiffoManagerModule(IServiceProvider serviceProvider)
     {
@@ -27,9 +29,10 @@ public class SpiffoManagerModule : InteractionModuleBase<SocketInteractionContex
     [UsedImplicitly]
     [SlashCommand("add-server", "Adds a gameserver to the bot to manage.")]
     [RequireOwner]
-    public async Task HandleAddServerCommand()
+    public async Task HandleAddServerCommand(string serverName, string serverPath, SocketRole roleThatCanManage, SocketGuildChannel channelForState)
     {
-        await RespondWithModalAsync<AddGameServerModal>(AddGameServerModalCustomId);
+        
+        //await RespondWithModalAsync<AddGameServerModal>(AddGameServerModalCustomId);
     }
 
     /// <summary>
@@ -68,6 +71,30 @@ public class SpiffoManagerModule : InteractionModuleBase<SocketInteractionContex
             return;
         }
 
-        await RespondAsync(embed: "Gameserver saved!".ToSuccessEmbed());
+        var guildRoles = Context.Guild.Roles;
+
+        var selectMenuBuilder = new SelectMenuBuilder()
+            .WithCustomId(RoleSelectionCustomId)
+            .WithPlaceholder("Select a role of your Discord server here")
+            .WithMinValues(1)
+            .WithMaxValues(guildRoles.Count);
+
+        foreach (var role in guildRoles)
+        {
+            selectMenuBuilder.AddOption(role.Name, role.Id.ToString());
+        }
+
+        var componentBuilder = new ComponentBuilder()
+            .WithSelectMenu(selectMenuBuilder);
+
+        await RespondAsync(embed: "Great! Now let's select Role(s) that can manage this server:".ToSuccessEmbed(),
+            components: componentBuilder.Build());
+    }
+
+    [ComponentInteraction(RoleSelectionCustomId)]
+    public async Task HandleRoleSelection(string[] roles)
+    {
+        var guildId = Context.Guild.Id;
+        var gameServerRoles = roles.Select(r => new GameServerRole());
     }
 }
